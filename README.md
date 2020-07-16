@@ -30,9 +30,11 @@ To describe the states of the environment, we propose traffic flow maps (TFMs) t
 <p align="center">
 <img src="img/TFM_One_with_4_movements.png" alt="TFM for One Intersection with 4 Movements" width=40%/> 
 <br>
-<img src="img/455.png" alt="TFM_455s" width=25%/> 
-<img src="img/1155.png" alt="TFM_1155s" width=25%/> 
-<img src="img/1755.png" alt="TFM_1755s" width=25%/> 
+<br>
+<br>
+<img src="img/455.png" alt="TFM_455s" width=30%/> 
+<img src="img/1155.png" alt="TFM_1155s" width=30%/> 
+<img src="img/1755.png" alt="TFM_1755s" width=30%/> 
 </p>
 
 ## Power Metric based Reward Function
@@ -40,13 +42,14 @@ To describe the states of the environment, we propose traffic flow maps (TFMs) t
 We introduce a reward function defined by the power metric which is the ratio of the network throughput to the average end-to-end delay. The proposed reward function simultaneously maximizes the network throughput and minimizes the average end-to-end delay.
 
 <p align="center">
-<img src="img/2DSARSA_Avg_EndToEnd_Delay.png" alt="Power Metric as Reward Function" width=25%/> 
-<img src="img/2DSARSA_Avg_EndToEnd_Delay_R_throughput.png" alt="System Throughput as Reward Function" width=25%/> 
-<img src="img/2DSARSA_Avg_EndToEnd_Delay_R_delay.png" alt="End-toEnd Delay as Reward Function" width=25%/> 
+<img src="img/2DSARSA_Avg_EndToEnd_Delay.png" alt="Power Metric as Reward Function" width=30%/> 
+<img src="img/2DSARSA_Avg_EndToEnd_Delay_R_throughput.png" alt="System Throughput as Reward Function" width=30%/> 
+<img src="img/2DSARSA_Avg_EndToEnd_Delay_R_delay.png" alt="End-toEnd Delay as Reward Function" width=30%/> 
 <br>
-<img src="img/2DSARSA_Avg_Queue.png" alt="Power Metric as Reward Function" width=25%/> 
-<img src="img/2DSARSA_Avg_Queue_R_throughput.png" alt="System Throughput as Reward Function" width=25%/> 
-<img src="img/2DSARSA_Avg_Queue_R_delay.png" alt="End-toEnd Delay as Reward Function" width=25%/> 
+<br>
+<img src="img/2DSARSA_Avg_Queue.png" alt="Power Metric as Reward Function" width=30%/> 
+<img src="img/2DSARSA_Avg_Queue_R_throughput.png" alt="System Throughput as Reward Function" width=30%/> 
+<img src="img/2DSARSA_Avg_Queue_R_delay.png" alt="End-toEnd Delay as Reward Function" width=30%/> 
 </p>
 
 ## Learning Performance of The Proposed 2DSARSA
