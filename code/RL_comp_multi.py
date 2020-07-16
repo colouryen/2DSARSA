@@ -206,6 +206,55 @@ for episode in range(1, config.MAX_EPISODES + 1, 1):
         
         prev_action = cur_action
 
+
+    for b in range(1, m * m + 1, 1):
+        Avg_total_queue_length_drl[int(np.floor((b - 1) / m)), (b - 1) % m] = np.sum(Queue_length_mat_drl[b])/(T_tot/T)
     
+    Avg_queue_history_drl.append(np.sum(Avg_total_queue_length_drl))
+
+
+    Delay_vec_DRL = np.array([])
+    for inx in range(1, m * m + 1, 1):
+        for lane in range(1, numOfLanes + 1, 2):
+            Ddrl_1357 = np.array([])
+            
+            if (inx in {1, 4, 7}) and (lane == 3):
+                sortedArrival_times_drl = np.sort(Arrival_times_drl[inx + 2][lane])
+                finished_index = np.where(Departure_times_drl[inx][lane] > 0)
+                Ddrl_1357 = Departure_times_drl[inx][lane][finished_index] - sortedArrival_times_drl[finished_index]
+            elif (inx in {3, 6, 9}) and (lane == 7):
+                sortedArrival_times_drl = np.sort(Arrival_times_drl[inx - 2][lane])
+                finished_index = np.where(Departure_times_drl[inx][lane] > 0)
+                Ddrl_1357 = Departure_times_drl[inx][lane][finished_index] - sortedArrival_times_drl[finished_index]
+            elif (inx in {7, 8, 9}) and (lane == 1):
+                sortedArrival_times_drl = np.sort(Arrival_times_drl[inx - 6][lane])
+                finished_index = np.where(Departure_times_drl[inx][lane] > 0)
+                Ddrl_1357 = Departure_times_drl[inx][lane][finished_index] - sortedArrival_times_drl[finished_index]
+            elif (inx in {1, 2, 3}) and (lane == 5):
+                sortedArrival_times_drl = np.sort(Arrival_times_drl[inx + 6][lane])
+                finished_index = np.where(Departure_times_drl[inx][lane] > 0)
+                Ddrl_1357 = Departure_times_drl[inx][lane][finished_index] - sortedArrival_times_drl[finished_index]
+            
+            Delay_vec_DRL = np.concatenate([Delay_vec_DRL, Ddrl_1357])
+
+
+    avgD = np.mean(Delay_vec_DRL)
+    Avg_Delay_history.append(avgD)
+
+    fair = Jain_fairness_index(Delay_vec_DRL)
+    Fairness_history.append(fair)
+
+    """"" Save Data and Save history """""
+    R_history.append(episode_reward)
+    sio.savemat('DRL_1357_train_data_d.mat', {'R_history':R_history, 'Avg_Delay_history': Avg_Delay_history, 'Fairness_history': Fairness_history, 'Avg_queue_history_drl':Avg_queue_history_drl})
+
+
+    print('Episode: %d' %episode)
+    print('Epsilon: %f' %epsilon)
+    print('Fairness: %.4f' %fair)
+    print('Reward: %.2f' %episode_reward)
+    print('Avg Queue: %d' %np.sum(Avg_total_queue_length_drl))
+
+
 """ Save Learned Model """
 model.save_w(model_name)
