@@ -171,7 +171,7 @@ If you find this open-source release useful, please reference in your paper:
 @inproceedings{yen2020deep,
   title={A Deep On-Policy Learning Agent for Traffic Signal Control of Multiple Intersections},
   author={Yen, Chia-Cheng and Ghosal, Dipak and Zhang, Michael and Chuah, Chen-Nee},
-  booktitle={2019 IEEE Intelligent Transportation Systems Conference (ITSC)},
+  booktitle={2020 IEEE Intelligent Transportation Systems Conference (ITSC)},
   pages={--},
   year={2020},
   organization={IEEE}
