@@ -57,7 +57,7 @@ We introduce a reward function defined by the power metric which is the ratio of
 The 2DSARSA agent is able to perform remarkably well in a complicated traffic network of multiple intersections in our [work](). We have shown that the proposed 2DSARSA architecture has a significantly better learning performance compared to other DRL architectures including [Deep Q-Network (DQN)](https://www.nature.com/articles/nature14236), [3DQN](https://ieeexplore.ieee.org/document/8600382) and [Deep SARSA (DSARSA)](https://ieeexplore.ieee.org/abstract/document/7849837).
 
 <p align="center">
-<img src="img/Learning_Performance_2DSARSA.png" alt="Learning Performance of The Proposed 2DSARSA" width=80%/> 
+<img src="img/Learning_Performance_2DSARSA.png" alt="Learning Performance of The Proposed 2DSARSA" width=70%/> 
 </p>
 
 
