@@ -71,7 +71,7 @@ config.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 #epsilon variables
 config.epsilon_start    = 1.0
 config.epsilon_final    = 0.01
-config.epsilon_decay    = 900 #30000
+config.epsilon_decay    = 300 #30000
 config.epsilon_by_time_slot = lambda ep: config.epsilon_final + (config.epsilon_start - config.epsilon_final) * math.exp(-1. * ep / config.epsilon_decay)
 
 #misc agent variables
