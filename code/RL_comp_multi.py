@@ -63,7 +63,7 @@ lam_vec = np.ones((m * m, 1)) * np.multiply([0.2, 1, 0.5, 1, 0.2, 1, 1, 1], 0.12
 dis_vec = np.array([['exp'] * numOfLanes] * (m * m))
 
 
-##### DQN Parameters #####
+##### DSARSA Parameters #####
 config = Config()
 
 config.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
