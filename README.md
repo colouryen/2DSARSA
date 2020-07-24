@@ -7,9 +7,9 @@ In Intelligent Transportation Systems (ITS), Deep Reinforcement Learning (DRL) i
 </p>
 
 
-## Motivation
+## Motivation and Contributions
 
-In Traffic Signal Control (TSC), existing work has focused on off-policy learning (Q-learning) with neural networks. There is insufficient study on the comparison between deep on-policy (DSARSA) and deep off-policy (DQN) in the context of TSC. This work is a first step towards addressing this gap for TSC researchers. Our preliminary work have shown that DQN and 3DQN perform unstably in a complex environment when the action space is extremely large. To address this issue, we propose the deep dueling on-policy learning algorithm, which is a new algorithm leveraging visualized inputs capturing flow dynamics, power metric based reward function, and several DRL related techniques. The proposed algorithm achieves a better learning performance in a large action space compared to well-known DRL algorithms
+In Traffic Signal Control (TSC), there has been a number of research efforts to apply ML techniques in general and Reinforcement Learning (RL) in particular, to optimize TSC. However, there is insufficient study on the comparison between deep on-policy (DSARSA) and deep off-policy (DQN) in the context of TSC. This work takes the first step in addressing the important gap in the learning performance in these two fundamental approaches for TSC researchers. Our preliminary work have shown that DQN and 3DQN perform unstably in a complex environment when the state and action space are extremely large. To address this issue, overall, this work makes three significant contributions on the important and challenging topic of applying RL in TSC, namely, 1) a first comparison of two fundamental deep reinforcement learning approaches namely, on-policy learning and off-policy learning, 2) a novel way of representing the state of the environment using traffic flow maps, and 3) an intuitive yet novel rewards function using the power metric that co-optimizes the network throughput and the end-to-end delay. We elaborate on these in the following paragraphs.
  
 
 ## The Proposed DRL Agent
@@ -20,12 +20,12 @@ In Traffic Signal Control (TSC), existing work has focused on off-policy learnin
   <img src="img/DRL_Arc.png" alt="Deep Reinforcement Learning Architecture" width=80%">
 </p>
 
-Deep Dueling SARSA (2DSARSA) is a novel deep reinforcement learning algorithm based on the incorporation of the proposed [traffic flow maps]() and [power metric based reward function]() into the [Deep On-Policy Learning (SARSA)](https://ieeexplore.ieee.org/abstract/document/7849837) algorithm, as well as applying [Dueling Network Architectures](https://arxiv.org/abs/1511.06581) and [Experience Replay Memory](https://www.nature.com/articles/nature14236?wm=book_wap_0005). 
+One contribution of this work relates to the design reinforcement learning algorithm. As mentioned before, deep RL methods that use neural networks, can be broadly classified into off-policy and on-policy methods. We have proposed and designed a novel on-policy deep RL agent for a centralized controller for a network of TSC that incorporate [traffic flow maps]() as the state description, the [power metric based reward function](), [Dueling Neural Network Architectures](https://arxiv.org/abs/1511.06581), and [Experience Replay Memory](https://www.nature.com/articles/nature14236?wm=book_wap_0005) to improve traffic signal control. The results show that the RL agent can better understand an environment, effectively learn from environmental feedback through the reward function and the learning process converges faster than many existing algorithms. In addition, the RL agent outperforms traditional BP-based algorithms and well-known deep off-policy based RL agents.
 
 
 ## Traffic Flow Maps (TFMs)
 
-To describe the states of the environment, we propose traffic flow maps (TFMs) that capture head-of-the-line (HOL) sojourn times for traffic lanes and HOL differences for adjacent intersections.
+Another fundamental problem in applying RL to a network of traffic intersections is the state space explosion problem. The state space grows exponentially both with increase in the fidelity of the state description as well as with the number of traffic intersections. An important contribution of this paper is to address this problem by describing the state using TFMs. In TFM, the state variables which can be real numbers (such as the waiting time of the Head-of-Line vehicle) are mapped into color map to transform the state into an image. This allows the state to be described with arbitrary high fidelity and capture and store dynamic traffic flows for a network of multiple intersections. We propose TFMs that capture head-of-the-line (HOL) sojourn times for traffic lanes and HOL differences for adjacent intersections.
 
 <p align="center">
 <img src="img/TFM_One_with_4_movements.png" alt="TFM for One Intersection with 4 Movements" width=36%/> 
@@ -39,7 +39,7 @@ To describe the states of the environment, we propose traffic flow maps (TFMs) t
 
 ## Power Metric based Reward Function
 
-We introduce a reward function defined by the power metric which is the ratio of the network throughput to the average end-to-end delay. The proposed reward function simultaneously maximizes the network throughput and minimizes the average end-to-end delay.
+The third critical aspect in any RL based approach is defining an appropriate reward function. This not only influences the learning performance but what the RL agent learns to  optimize. We proposed a novel reward function based on the power metric which is defined as the ratio of the system throughput to the end-to-end delay. In computer networks, this is referred to as the Klienrock's optimal operating point and is the basis of recent congestion control algorithm developed for the Internet. Based on detailed simulation analysis, it shown that the RL agent not only achieves good learning performance (faster convergence) but also achieve better performance in terms of network throughput and end-to-end delay.
 
 <p align="center">
 <img src="img/2DSARSA_Avg_EndToEnd_Delay.png" alt="Power Metric as Reward Function" width=32%/> 
