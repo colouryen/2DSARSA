@@ -161,7 +161,7 @@ python RL_comp_multi.py
 You can readily train a new model for a traffic network of 9 intersections by running the [RL_comp_multi.py](./code/RL_comp_multi.py) script from the agent's main directory. 
 
 
-### Save Model 
+### Save the Model 
 
 You can save a trained model in the ```saved_agents``` folder after running the [RL_comp_multi.py](./code/RL_comp_multi.py) script from the main folder.
 
